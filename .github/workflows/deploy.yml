@@ -1,0 +1,23 @@
+name: 🚀 Deploy Theme Updates from Local Machine by, git -> GitHub -> Hostinger FTP -> Live Website
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy Theme Code on every Push
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Checkout repo
+      uses: actions/checkout@v4
+    
+    - name: 📂 Deploy Theme via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: 145.223.89.131
+        username: u737075756
+        password: ${{ secrets.ftp_password }}
+        server-dir: /public_html/wp-content/themes/banksia
+        local-dir: ./banksia
